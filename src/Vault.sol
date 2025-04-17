@@ -11,7 +11,7 @@ contract Vault {
     }
 
     // Withdraw ETH from the vault
-    function withdraw(uint256 amount) external {
+    function withdraw(uint256 amount) external payable {
         require(balances[msg.sender] >= amount, "Insufficient balance");
         balances[msg.sender] -= amount;
         (bool sent, ) = msg.sender.call{value: amount}("");
